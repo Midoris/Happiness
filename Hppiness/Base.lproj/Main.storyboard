@@ -7,7 +7,7 @@
         <!--Happiness View Controller-->
         <scene sceneID="Zcq-VS-vb0">
             <objects>
-                <viewController id="S2A-2O-mYi" customClass="HappinessViewController" customModule="Hppiness" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="S2A-2O-mYi" customClass="HappinessViewController" customModule="Happiness" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E5f-N2-0sA"/>
                         <viewControllerLayoutGuide type="bottom" id="Lb2-G1-9RF"/>
@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4TG-6z-Op4" customClass="FaceView" customModule="Hppiness" customModuleProvider="target">
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4TG-6z-Op4" customClass="FaceView" customModule="Happiness" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>

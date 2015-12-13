@@ -25,15 +25,22 @@ class FaceView: UIView {
     var scale : CGFloat = 0.90 {didSet {setNeedsDisplay()}}
     
     
-    var faceCenter: CGPoint {
+    private var faceCenter: CGPoint {
         return convertPoint(center, fromView: superview)
     }
-    var faceRadius: CGFloat {
+    private var faceRadius: CGFloat {
         return min(bounds.size.width, bounds.size.height) / 2 * scale
     }
     
+    // public (non-private) delegate property
+    // anyone who wants to provide our View's data
+    // should just set themselves to be this property
     weak var dataSource: FaceViewDataSource?
     
+    
+    // gesture handler for pinching
+    // non-private so that Controllers can create a recognizer for pinch
+    // and then add it to us if they want us to support pinching
     func scale(gesture: UIPinchGestureRecognizer) {
         if gesture.state == .Changed {
             scale *= gesture.scale
@@ -41,9 +48,10 @@ class FaceView: UIView {
         }
     }
     
+    
+    // the rest of this class is the code to draw the face
+
     override func drawRect(rect: CGRect) {
-        // Drawing code
-        
         
         let facePath = UIBezierPath(arcCenter: faceCenter, radius: faceRadius, startAngle: 0, endAngle:CGFloat(2*M_PI), clockwise: true)
         
@@ -54,6 +62,8 @@ class FaceView: UIView {
         bezierPathForEye(.Left).stroke()
         bezierPathForEye(.Right).stroke()
         
+        // get the smiliness from our dataSource delegate
+        // smiliness will default to zero if either the dataSource is nil or the dataSource returns nil
         let smiliness = dataSource?.smilinessForeFaceView(self) ?? 0.0
         let smilePath = bezierPathForSmile(smiliness)
         smilePath.stroke()
